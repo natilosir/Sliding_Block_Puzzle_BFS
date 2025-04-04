@@ -1,4 +1,4 @@
-# 8-Puzzle Solver
+# 48-Puzzle Solver
 
 This Python program solves the classic 8-puzzle game using a Breadth-First Search (BFS) algorithm. The puzzle consists of a 3x3 grid with 8 numbered tiles and one blank space. The goal is to rearrange the tiles from a given initial state to the goal state by sliding them into the blank space.
 
