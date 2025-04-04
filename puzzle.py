@@ -5,8 +5,7 @@ from collections import \
 
 
 class PuzzleState:
-    def __init__(
-            self,
+    def __init__(self,
             board,
             size,
             parent=None,
