@@ -1,0 +1,30 @@
+Algorithm: bfs
+Time taken: 0.0002 seconds
+Steps: 4
+
+Initial state:
+1 2 5
+3 4 8
+6 7 .
+
+Step 1: UP
+1 2 5
+3 4 .
+6 7 8
+
+Step 2: UP
+1 2 .
+3 4 5
+6 7 8
+
+Step 3: LEFT
+1 . 2
+3 4 5
+6 7 8
+
+Step 4: LEFT
+. 1 2
+3 4 5
+6 7 8
+
+Solved in 4 steps
