@@ -1,63 +1,114 @@
-# Puzzle Solver
+# 8-Puzzle Solver
 
-This Python program solves the classic 8-puzzle game using a Breadth-First Search (BFS) algorithm. The puzzle consists of a 3x3 grid with 8 numbered tiles and one blank space. The goal is to rearrange the tiles from a given initial state to the goal state by sliding them into the blank space.
+An implementation of the classic 8-puzzle problem solver using both A* and BFS algorithms.
 
 ## Features
 
-- **BFS Algorithm**: Uses BFS to explore all possible moves level by level, guaranteeing the shortest solution path.
-- **PuzzleState Class**: Represents each state of the puzzle, including the board configuration, blank position, and possible moves.
-- **Interactive Solution Display**: Prints each move step-by-step, showing the board configuration after each move.
-
-## How It Works
-
-1. **Initialization**: The program starts with a predefined initial board state.
-2. **Solving**: The BFS algorithm explores all possible moves from the initial state, avoiding revisiting any state.
-3. **Solution Path**: Once the goal state is reached, the solution path (sequence of moves) is reconstructed and displayed.
-
-## Code Structure
-
-- **PuzzleState**: Handles the puzzle board, blank position, possible moves, and state transitions.
-- **solve_puzzle**: Implements BFS to find the shortest path to the goal state.
-- **print_solution**: Displays the solution step-by-step, including the board after each move.
-
-## Example
-
-### Initial Board:
-```bash
-[1, 3, 6]
-[5, 0, 2]
-[4, 7, 8]
-```
-
-### Solution Steps:
-1. **UP**: Move the blank space up.
-2. **LEFT**: Move the blank space left.
-3. ... (continues until the goal state is reached).
-
-### Goal State:
-```bash
-[0, 1, 2]
-[3, 4, 5]
-[6, 7, 8]
-```
-
-## Usage
-
-1. Modify the `test_board` variable in the script to set a custom initial state.
-2. Run the script: `py puzzle.py`.
-3. The solution path and intermediate states will be printed in the console.
+- Solves 8-puzzle problems using:
+    - A* algorithm with Manhattan distance heuristic
+    - Breadth-First Search (BFS)
+- Displays each move and the puzzle state after the move
+- Measures and reports solution time
+- Supports both console output and file output
 
 ## Requirements
 
 - Python 3.x
-- No external dependencies are required.
+
+## Installation
+
+No installation required. Just download the `puzzle.py` file.
+
+## Usage
+
+### Basic Command
+
+```py
+python puzzle.py [--astar|--bfs] input_file.txt
+```
+
+### Arguments
+- `--astar`: Use A* search algorithm
+
+- `--bfs`: Use Breadth-First Search algorithm
+
+- `input_file.txt`: Path to input file containing the puzzle
+
+### Input File Format
+The input file should contain the initial puzzle state in one of these formats:
+
+1. With size specification (recommended):
+
+```bash
+3
+1 2 3
+4 5 6
+7 8 0
+```
+2. Without size specification (assumes 3x3):
+
+```bash
+1 2 3
+4 5 6
+7 8 0
+```
+- Use `0` to represent the empty tile
+- Numbers should be space-separated
+- Each row on a new line
+
+## Output
+### The program will:
+
+1. Print the solution steps with puzzle states to the console
+1. Save detailed solution to [input_filename]_solution.txt
+
+### Example
+Input file puzzle.txt:
+
+```bash
+3
+1 2 5
+3 4 8
+6 7 0
+```
+Command:
+
+```bash
+python puzzle.py --astar puzzle.txt
+```
+Console output will show each move and puzzle state:
+
+```bash
+Step 1: UP
+1 2 5
+3 4 .
+6 7 8
+
+Step 2: LEFT
+1 2 .
+3 4 5
+6 7 8
+...
+```
+And save complete solution to `puzzle_solution.txt`.
+
+---
+## Algorithms
+
+- A*
+- - Generally faster for solvable puzzles.
+- - Finds good (but not always shortest) solutions.
+- - Uses Manhattan distance heuristic.
+
+- BFS
+- - Guaranteed to find the shortest solution.
+- - May be slower for complex puzzles.
+- - Uses more memory for large search spaces.
+
+---
 
 ## Notes
-
-- The program includes a 10-second delay (`time.sleep(10)`) at the end to allow users to view the output before the console closes (useful when running the script in some environments).
-- The goal state is hardcoded as:
-```bash
-[0, 1, 2]
-[3, 4, 5]
-[6, 7, 8]
-```
+- The program only supports **3x3 puzzles**.
+- Unsolvable puzzles will be detected (no solution found).
+- Empty tile is displayed as `.` in output.
+- Solution file includes timing and step count information.
